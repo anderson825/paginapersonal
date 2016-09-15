@@ -35,6 +35,7 @@ public class Ventana extends javax.swing.JFrame {
         jBAdicionar = new javax.swing.JButton();
         jBCantidad = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jBuscar = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -56,18 +57,30 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel1.setText("CREAR CRUD MYSQL");
 
+        jBuscar.setText("BUSCAR");
+        jBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBAdicionar)
-                        .addGap(56, 56, 56)
-                        .addComponent(jBCantidad)))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBAdicionar)
+                                .addGap(56, 56, 56)
+                                .addComponent(jBCantidad))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jBuscar)))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -79,7 +92,9 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBAdicionar)
                     .addComponent(jBCantidad))
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBuscar)
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,6 +108,17 @@ public class Ventana extends javax.swing.JFrame {
     private void jBCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCantidadActionPerformed
                 JOptionPane.showMessageDialog(null,"total registrado"+dao.obtenerCantidadPersonas());
     }//GEN-LAST:event_jBCantidadActionPerformed
+
+    private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
+       String id=JOptionPane.showInputDialog("ingresar el id");
+       Persona aux= dao.buscar(id);
+       if(aux!=null){
+           JOptionPane.showMessageDialog(null, aux);
+       }else{
+        JOptionPane.showMessageDialog(null,"Error no encontrado");
+ 
+       }
+    }//GEN-LAST:event_jBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,6 +158,7 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAdicionar;
     private javax.swing.JButton jBCantidad;
+    private javax.swing.JButton jBuscar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

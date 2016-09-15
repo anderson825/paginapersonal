@@ -33,5 +33,13 @@ public class DAO {
        return this.listadoPersonas.add(p);
    }
    
+   public Persona buscar(String id){
+       for(Persona aux : listadoPersonas){
+           if(aux.getId().equals(id)){
+               return aux;
+           }
+       }
+       return null;
+   }
     
 }
